@@ -12,9 +12,16 @@ public class MouseInteractions : MonoBehaviour
 
     private Interactable currentlyInteracting = null;
 
+    private Interactable interactableChosen = null;
+
+    public Interactable InteractableChosen { get => interactableChosen; set => interactableChosen = value; }
+
     private void Start()
     {
         camera = Camera.main;
+
+        GameObject.Find("ActionPanel").SetActive(false);
+        GameObject.Find("InfoPanel").SetActive(false);
     }
 
     void Update()
@@ -24,24 +31,39 @@ public class MouseInteractions : MonoBehaviour
 
     void CheckRaycast()
     {
-        RaycastHit hit;
         Ray ray = camera.ScreenPointToRay(Mouse.current.position.ReadValue());
 
-        if (Physics.Raycast(ray, out hit, 1000f, interactionsMask))
+        bool raycastHitTarget = Physics.Raycast(ray, out RaycastHit hit, 1000f, interactionsMask);
+
+        Interactable interactingTmp = null;
+
+        if (raycastHitTarget)
         {
-            currentlyInteracting = hit.collider.GetComponent<Interactable>();
+            interactingTmp = hit.collider.GetComponent<Interactable>();
         }
-        else if (currentlyInteracting)
+
+        if (interactingTmp != currentlyInteracting)
         {
-            currentlyInteracting = null;
+            if (currentlyInteracting)
+            {
+                currentlyInteracting.SetDisabled();
+            }
+
+            currentlyInteracting = interactingTmp;
+
+            if (currentlyInteracting)
+            {
+                currentlyInteracting.SetEnabled();
+            }
         }
     }
 
     public void HandleMouseClick(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started)
+        if (context.phase == InputActionPhase.Started && currentlyInteracting)
         {
-            Debug.Log("Click");
+            interactableChosen = currentlyInteracting;
+            currentlyInteracting.ShowPanel();
         }
     }
 }
