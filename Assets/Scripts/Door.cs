@@ -16,6 +16,8 @@ public class Door : Interactable
         base.Interact();
 
         anim.SetTrigger("Open");
+
+        GameObject.Find("Main Camera").GetComponent<GameManager>().FinishGame();
     }
 
     public void MeetRestrictions()

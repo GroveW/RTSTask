@@ -168,8 +168,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8966421651022440339}
   - component: {fileID: 8966421651013404787}
-  - component: {fileID: 1748614659}
   - component: {fileID: 1748614660}
+  - component: {fileID: 1196064638}
   m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
@@ -203,7 +203,7 @@ Animator:
   m_GameObject: {fileID: 8966421651022937011}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 5518466ac73c3b94e8f1765c6c455927, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ad2d41905f27e6d4f8ab4aa7ccd5c063, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -212,27 +212,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1748614659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8966421651022937011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85cb64b04118d174d9c96661d718c52a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ColorApplyer: {r: 1, g: 0, b: 0, a: 0}
-  mouseHover:
-    m_Name: Mouse Hover
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: cee870d4-4779-4ce3-b9bf-4ae3786e3013
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
 --- !u!65 &1748614660
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -246,3 +225,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 2.26, z: 1}
   m_Center: {x: 0, y: 0.89, z: 0}
+--- !u!114 &1196064638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8966421651022937011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b702bc2398e6774aa6362ca9ccb4c16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColorApplyer: {r: 0, g: 0.15932798, b: 1, a: 0}
+  actionDescription: Open?
+  isRestricted: 1
+  manager: {fileID: 0}

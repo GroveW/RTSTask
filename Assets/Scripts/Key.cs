@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Key : Interactable
 {
-    [SerializeField]
-    private Door door;
+    public Door door;
 
     public override void Interact()
     {
